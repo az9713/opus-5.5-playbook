@@ -1,0 +1,13 @@
+{
+  "name": "opus55-local",
+  "owner": {
+    "name": "Simon"
+  },
+  "plugins": [
+    {
+      "name": "opus55-kit",
+      "source": "./opus55-kit",
+      "description": "Opus 5.5 best practices without memorizing them: rules for Opus 5.5 only, prompt nudges, TASKS.md continuation for unattended runs, setup audit."
+    }
+  ]
+}

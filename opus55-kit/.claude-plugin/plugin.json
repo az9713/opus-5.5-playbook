@@ -1,0 +1,9 @@
+{
+  "name": "opus55-kit",
+  "version": "0.1.0",
+  "description": "Applies the Anthropic Opus 5.5 best practices without memorizing them: standing rules added only when the model is Opus 5.5, one-line prompt nudges, a TASKS.md continuation for unattended runs, and a one-time setup audit.",
+  "author": {
+    "name": "Simon"
+  },
+  "license": "MIT"
+}
