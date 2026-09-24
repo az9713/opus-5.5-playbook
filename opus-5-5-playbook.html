@@ -78,7 +78,7 @@
   .group-head { display: grid; gap: 6px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
   .group-head p { color: var(--muted); max-width: 68ch; }
 
-  article.bp { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 20px; background: var(--card-2); border: 1px solid var(--line-soft); border-radius: 6px; }
+  article.bp { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; scroll-margin-top: 16px; padding: 20px; background: var(--card-2); border: 1px solid var(--line-soft); border-radius: 6px; }
   article.bp[hidden] { display: none !important; }
   .bp-head { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; justify-content: space-between; }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -181,7 +181,7 @@
           </tbody>
         </table>
       </div>
-      <article class="bp" data-surface="all-only">
+      <article class="bp" id="why-a-practice-fits-one-two-or-all-three-surfaces" data-surface="all-only">
         <h3>Why a practice fits one, two or all three surfaces</h3>
         <p class="note">A practice works only where its control exists. Each practice uses one of three kinds of control:</p>
         <ul>
@@ -191,7 +191,7 @@
         </ul>
         <p class="note">A practice fits two surfaces when its control exists on two. Effort is a setting in Claude Code and a field on the API, and the sources name no effort control in the apps. "Say when answers are settled" fits the apps and the API; the guide excludes agentic work, which is what Claude Code does.</p>
       </article>
-      <article class="bp" data-surface="all-only">
+      <article class="bp" id="do-the-distinctions-matter" data-surface="all-only">
         <h3>Do the distinctions matter?</h3>
         <p class="note">For 10 of the 30 practices, no: they are words you write, and they work the same everywhere. The <b>Any surface</b> button shows them. For the other 20, yes: the practice uses a control that is missing on some surfaces. For example, a CLAUDE.md rule has no effect on an API integration, and a <code>max_tokens</code> tip cannot be applied in the apps.</p>
         <p class="note">So the surface buttons show only the practices that depend on that surface. To see everything that applies to one surface, read <b>Any surface</b> and that surface's button.</p>
@@ -223,7 +223,7 @@
         <div class="fact"><span class="n">always on</span><p>Adaptive thinking cannot be turned off. <code>thinking: {"type": "disabled"}</code> returns a 400 error at every effort level.</p></div>
         <div class="fact"><span class="n">medium ≥ high</span><p>Opus 5.5 at <code>medium</code> matches or beats Opus 5 at <code>high</code> on coding and knowledge work. On several coding evals, <code>low</code> comes close, at much lower cost.</p></div>
       </div>
-      <article class="bp" data-surface="any">
+      <article class="bp" id="where-the-model-is-strongest" data-surface="any">
         <div class="bp-head"><h3>Where the model is strongest</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <ul>
           <li><b>Agentic coding and code review.</b> Multistep work in a real repository, such as a change carried through a large code base until its tests pass. It sustains multi-hour audits and migrations with parallel subagents and little oversight. Testers report more bugs caught than Opus 5, with fewer false alarms.</li>
@@ -243,7 +243,7 @@
         <p>How to write the prompt itself: define the finish line, drop old thinking instructions, name exact design patterns, and mark text that came from somewhere else.</p>
       </div>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="say-what-done-looks-like-then-let-it-run" data-surface="any">
         <div class="bp-head"><h3>Say what "done" looks like, then let it run</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>Give the whole task in one message. Name the finish line, like "the tests pass" or "every endpoint is migrated". Say when it must stop and ask. Then let it work.</dd>
@@ -257,7 +257,7 @@ Stop and ask me only if a test fails for a reason you can't explain.</code></pre
         <p class="src">Source: blog §1.</p>
       </article>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="delete-think-hard-instructions" data-surface="any">
         <div class="bp-head"><h3>Delete "think hard" instructions</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>Remove "think carefully", "think step by step" and similar lines from prompts, saved instructions and chat system prompts. For a fast answer to a simple question, say "Answer directly." To change how much it thinks, change effort.</dd>
@@ -268,7 +268,7 @@ Stop and ask me only if a test fails for a reason you can't explain.</code></pre
         <p class="src">Source: blog §1; guide, "Thinking instructions in chat system prompts".</p>
       </article>
 
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="add-to-a-running-task" data-surface="cc">
         <div class="bp-head"><h3>Add to a running task</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>If you remember something during a run, type the message and press Enter while Claude works. You do not need to wait or restart.</dd>
@@ -279,7 +279,7 @@ Stop and ask me only if a test fails for a reason you can't explain.</code></pre
         <p class="src">Source: blog §1.</p>
       </article>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="for-design-work-name-the-styles-you-do-not-want" data-surface="any">
         <div class="bp-head"><h3>For design work, name the styles you do not want</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>List the specific design patterns to leave out. Then look at what it chose instead. If you do not like that either, add it to the list and ask again.</dd>
@@ -294,7 +294,7 @@ pill-shaped buttons.</code></pre></div>
         <p class="src">Source: blog §1; guide, "Frontend design defaults".</p>
       </article>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="do-not-ask-it-to-show-its-reasoning-in-the-reply" data-surface="any">
         <div class="bp-head"><h3>Do not ask it to show its reasoning in the reply</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>Remove requests to reproduce its internal reasoning in the reply, from prompts and from saved instructions. Ask for the thing you need instead. On the API, set <code>display: "summarized"</code> and read the reasoning from the thinking blocks.</dd>
@@ -305,7 +305,7 @@ pill-shaped buttons.</code></pre></div>
         <p class="src">Source: blog §5; guide, "Safeguard refusals" and "Prompts written for thinking disabled".</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="mark-pasted-text-in-user-messages" data-surface="api">
         <div class="bp-head"><h3>Mark pasted text in user messages</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>Wrap each block of text that the user pasted from somewhere else in an opening and a closing tag. Both tags carry the same short random ID, which your application generates, and each tag goes on its own line. Then add the note below to your system prompt.</dd>
@@ -322,7 +322,7 @@ pill-shaped buttons.</code></pre></div>
         <p class="src">Source: guide, "Mark pasted text in user messages". Claude Code already applies this mark to text you paste.</p>
       </article>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="explore-context-in-multi-app-workflows" data-surface="any">
         <div class="bp-head"><h3>Explore context in multi-app workflows</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>For an agent that works across connected apps (email, documents, spreadsheets, CRM records), add one sentence that makes it look through the sources before it changes anything.</dd>
@@ -342,7 +342,7 @@ pill-shaped buttons.</code></pre></div>
         <p>How to keep a long run going, split it across subagents, and see where it is. The last four items are for people who build their own agent loop on the API.</p>
       </div>
 
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="tell-it-which-stops-you-want" data-surface="cc">
         <div class="bp-head"><h3>Tell it which stops you want</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>Put a short rule in CLAUDE.md about when to stop and ask, and when to keep going. Edit it to fit your project.</dd>
@@ -362,7 +362,7 @@ this repository.</code></pre></div>
         <p class="src">Source: blog §2.</p>
       </article>
 
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="split-big-work-across-subagents" data-surface="cc">
         <div class="bp-head"><h3>Split big work across subagents</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>For an audit, a migration, or a review across a large codebase, ask Opus 5.5 to give each part to its own subagent and to check each result.</dd>
@@ -376,7 +376,7 @@ Finish with one table: service, affected yes or no, and the evidence.</code></pr
         <p class="src">Source: blog §2.</p>
       </article>
 
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="keep-the-task-list-in-a-file" data-surface="cc">
         <div class="bp-head"><h3>Keep the task list in a file</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>For a long run, ask Opus 5.5 to keep its task list in a file and update it as it goes. Read the file, not the scrollback, to see where the run is.</dd>
@@ -387,7 +387,7 @@ Finish with one table: service, affected yes or no, and the evidence.</code></pr
         <p class="src">Source: blog §2. The API version is in "Unattended runs" below.</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="unattended-runs-a-text-only-end-of-turn-is-a-report-not-done" data-surface="api">
         <div class="bp-head"><h3>Unattended runs: a text-only end of turn is a report, not "done"</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>
@@ -408,7 +408,7 @@ Finish with one table: service, affected yes or no, and the evidence.</code></pr
         <p class="src">Source: guide, "Unattended agentic runs".</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="user-facing-progress-updates-four-controls" data-surface="api">
         <div class="bp-head"><h3>User-facing progress updates: four controls</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>
@@ -426,7 +426,7 @@ Finish with one table: service, affected yes or no, and the evidence.</code></pr
         <p class="src">Source: guide, "User-facing progress updates". Claude Code already shows these notes.</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="time-signals-for-multiagent-harnesses" data-surface="api">
         <div class="bp-head"><h3>Time signals for multiagent harnesses</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>If you can estimate how long a task should take, give a time budget. Have the harness append a short line to each message it sends back to the model with the elapsed time against the budget, in seconds, for example <code>elapsed 340s / 1200s</code>. Set the budget somewhat above the time you want, and tune it on a sample of your tasks. If you cannot predict a budget, show only the elapsed time and add the sentence below to the system prompt.</dd>
@@ -446,7 +446,7 @@ Finish with one table: service, affected yes or no, and the evidence.</code></pr
         <p>How to read a finished run and how to ask for a review.</p>
       </div>
 
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="read-what-it-needs-from-you-first" data-surface="cc">
         <div class="bp-head"><h3>Read what it needs from you first</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>When a long run ends, look first for anything Claude waits on you for, such as a decision it left open or a change it wants you to approve. Then read the rest of the summary. To change the summary's format, say so in CLAUDE.md.</dd>
@@ -457,7 +457,7 @@ Finish with one table: service, affected yes or no, and the evidence.</code></pr
         <p class="src">Source: blog §3.</p>
       </article>
 
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="ask-it-to-review-the-code" data-surface="cc">
         <div class="bp-head"><h3>Ask it to review the code</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>Ask Opus 5.5 to review a diff or a pull request before a person does.</dd>
@@ -470,7 +470,7 @@ file and line, why it's wrong, and how to show it fails.</code></pre></div>
         <p class="src">Source: blog §3.</p>
       </article>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="ask-it-to-mark-what-it-could-not-confirm" data-surface="any">
         <div class="bp-head"><h3>Ask it to mark what it could not confirm</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>For research and analysis, ask it to say what it could not find or could not check. This works in a Claude research report and in Claude Code.</dd>
@@ -489,7 +489,7 @@ file and line, why it's wrong, and how to show it fails.</code></pre></div>
         <p>First, check that the model picker says Opus 5.5.</p>
       </div>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="share-the-chart-or-screenshot-itself" data-surface="any">
         <div class="bp-head"><h3>Share the chart or screenshot itself</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>Attach the chart, diagram, screenshot or slide. Do not retype the numbers. Ask a specific question.</dd>
@@ -500,7 +500,7 @@ file and line, why it's wrong, and how to show it fails.</code></pre></div>
         <p class="src">Source: blog §4.</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="tools-for-the-densest-visual-inputs" data-surface="api">
         <div class="bp-head"><h3>Tools for the densest visual inputs</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>
@@ -516,7 +516,7 @@ file and line, why it's wrong, and how to show it fails.</code></pre></div>
         <p class="src">Source: guide, "Tools for complex visual inputs".</p>
       </article>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="ask-it-to-check-a-long-document" data-surface="any">
         <div class="bp-head"><h3>Ask it to check a long document</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <dl>
           <dt>Do</dt><dd>Give it a long plan, report or deck, and ask it to find mistakes.</dd>
@@ -527,7 +527,7 @@ file and line, why it's wrong, and how to show it fails.</code></pre></div>
         <p class="src">Source: blog §4.</p>
       </article>
 
-      <article class="bp" data-surface="app cc">
+      <article class="bp" id="ask-for-the-finished-file" data-surface="app cc">
         <div class="bp-head"><h3>Ask for the finished file</h3><div class="tags"><span class="tag app">Claude apps</span><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>When you want a spreadsheet or a document, ask for the file, not an outline.</dd>
@@ -538,7 +538,7 @@ file and line, why it's wrong, and how to show it fails.</code></pre></div>
         <p class="src">Source: blog §4.</p>
       </article>
 
-      <article class="bp" data-surface="app api">
+      <article class="bp" id="in-a-long-chat-say-when-answers-are-settled" data-surface="app api">
         <div class="bp-head"><h3>In a long chat, say when answers are settled</h3><div class="tags"><span class="tag app">Claude apps</span><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>If follow-up questions in a long chat feel slow, add an instruction that earlier answers are settled: in the project's instructions (apps), or at the end of the system prompt (API).</dd>
@@ -561,7 +561,7 @@ ask about it or point out a problem with it.</code></pre></div>
         <p>Thinking is always on, so effort is the main control for intelligence, latency and cost. In Claude Code you change effort in the settings. The API details below are for your own integrations.</p>
       </div>
 
-      <article class="bp" data-surface="cc api">
+      <article class="bp" id="start-at-medium-set-it-explicitly-and-measure" data-surface="cc api">
         <div class="bp-head"><h3>Start at medium, set it explicitly, and measure</h3><div class="tags"><span class="tag cc">Claude Code</span><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>
@@ -591,7 +591,7 @@ ask about it or point out a problem with it.</code></pre></div>
         <p class="src">Source: guide, "Calibrate effort"; effort page, "Effort levels", "Recommended effort levels for Claude Opus 5.5", "Effort with tool use".</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="set-max-tokens-high-enough" data-surface="api">
         <div class="bp-head"><h3>Set max_tokens high enough</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>Set <code>max_tokens</code> high enough for the thinking tokens and the reply. For long agentic coding turns, <code>128,000</code>, the model's maximum, worked well in Anthropic's testing.</dd>
@@ -601,7 +601,7 @@ ask about it or point out a problem with it.</code></pre></div>
         <p class="src">Source: guide, "Calibrate effort"; effort page.</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="change-effort-mid-conversation-without-losing-the-cache" data-surface="api">
         <div class="bp-head"><h3>Change effort mid-conversation without losing the cache</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>To run later turns at a different level, add a <code>role: "system"</code> message with empty <code>content</code> and the new level in <code>output_config.effort</code>. The new level applies from the next <code>user</code> turn and holds until a later message changes it. Beta header: <code>mid-conversation-output-config-2026-07-01</code>. Values: <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code>.</dd>
@@ -623,7 +623,7 @@ ask about it or point out a problem with it.</code></pre></div>
         <p class="src">Source: effort page, "Change effort mid-conversation" and "Best practices"; guide, "Calibrate effort".</p>
       </article>
 
-      <article class="bp" data-surface="api">
+      <article class="bp" id="migrate-prompts-written-for-thinking-disabled" data-surface="api">
         <div class="bp-head"><h3>Migrate prompts written for thinking disabled</h3><div class="tags"><span class="tag api">API</span></div></div>
         <dl>
           <dt>Do</dt><dd>
@@ -649,7 +649,7 @@ ask about it or point out a problem with it.</code></pre></div>
         <p>Opus 5.5 is the first Opus model to launch with Fable-level bio and cyber safeguards. Most flagged messages move to an older model, and the work continues there. These safeguards can sometimes flag legitimate work, and Anthropic is tuning them to reduce incorrect flags.</p>
       </div>
 
-      <article class="bp" data-surface="any">
+      <article class="bp" id="what-the-safeguards-cover" data-surface="any">
         <div class="bp-head"><h3>What the safeguards cover</h3><div class="tags"><span class="tag any">Any surface</span></div></div>
         <ul>
           <li><b>Biology.</b> The same safeguards as Claude Fable 5.1, new if you come from Opus 5. Everyday health and educational questions are not affected. If the classifier blocks your organization's life-sciences work, apply to the Life Sciences Verification Program.</li>
@@ -662,7 +662,7 @@ ask about it or point out a problem with it.</code></pre></div>
         <p class="src">Source: blog §5; guide, "Safeguard refusals".</p>
       </article>
 
-      <article class="bp" data-surface="app">
+      <article class="bp" id="in-claude-apps" data-surface="app">
         <div class="bp-head"><h3>In Claude apps</h3><div class="tags"><span class="tag app">Claude apps</span></div></div>
         <dl>
           <dt>You see</dt><dd>A notice that starts with "Switched to" and the name of an older model. Claude answers on that model, and the chat stays on it.</dd>
@@ -677,7 +677,7 @@ ask about it or point out a problem with it.</code></pre></div>
         <p class="src">Source: blog §5.</p>
       </article>
 
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="in-claude-code" data-surface="cc">
         <div class="bp-head"><h3>In Claude Code</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>You see</dt><dd>A notice that names the older model. The session continues on that model.</dd>
@@ -700,7 +700,7 @@ ask about it or point out a problem with it.</code></pre></div>
       <div class="group-head">
         <h2>Speed</h2>
       </div>
-      <article class="bp" data-surface="cc">
+      <article class="bp" id="turn-on-fast-mode-when-you-wait-on-each-reply" data-surface="cc">
         <div class="bp-head"><h3>Turn on fast mode when you wait on each reply</h3><div class="tags"><span class="tag cc">Claude Code</span></div></div>
         <dl>
           <dt>Do</dt><dd>Use fast mode for back-and-forth work, where you read each reply before you send the next message.</dd>

@@ -103,70 +103,71 @@ The plugin came out of one Claude Code session on Opus 5.5 (2026-09-23 to 2026-0
 ## What is in the plugin, and why
 
 Each row links to the source section it comes from. Blog = the Opus 5.5 blog, Guide = "Prompting Claude
-Opus 5.5", Effort = the "Effort" docs page (see [Sources](#sources)).
+Opus 5.5", Effort = the "Effort" docs page (see [Sources](#sources)). The last column links to
+the matching card on the [playbook page](#the-playbook-page).
 
 **Standing rules (`rules.md`).** These are the model's work, not the user's. Standing instructions let the
 user write them zero times.
 
-| Rule | Source section |
-|---|---|
-| When to stop and ask; keep going otherwise | Blog: [Tell it which stops you want][b-stops] |
-| State a finish line when the task has none | Blog: [Say what "done" looks like, then let it run][b-done] |
-| Run summary: Blocked on me / Changed / Found | Blog: [Read what it needs from you first][b-needs] |
-| Keep a `TASKS.md` checklist | Blog: [Keep the task list in a file][b-tasks] |
-| Split big work across subagents; check their evidence | Blog: [Ask it to split big work across subagents][b-sub] |
-| Code review: only merge blockers, with file, line and a failing case | Blog: [Ask it to review the code][b-review] |
-| Mark what you could not confirm, and where you looked | Blog: [Ask it to mark what it couldn't confirm][b-confirm] |
-| Find contradictions in a document: numbers, dates, names | Blog: [Ask it to check a long document][b-doc] |
-| Frontend avoid list | Blog: [For design work, name the styles you don't want][b-design]; Guide: [Frontend design defaults][g-front] |
-| Explore connected apps before changing anything | Guide: [Explore context in multi-app workflows][g-explore] |
-| Explain a choice in a few sentences, not the internal reasoning | Blog: [Don't ask it to show its reasoning in the reply][b-reason]; Guide: [Safeguard refusals][g-refusal] |
-| Recovery after a safety flag (`/model`, Esc Esc, `/config`, `/feedback`), marked "applies to any model". The flag is rare, so the user will not remember the steps. | Blog: [In Claude Code][b-flag-cc]; [In Claude apps][b-flag-apps] |
+| Rule | Source section | Playbook card |
+|---|---|---|
+| When to stop and ask; keep going otherwise | Blog: [Tell it which stops you want][b-stops] | [Tell it which stops you want][p-tell-it-which-stops-you-want] |
+| State a finish line when the task has none | Blog: [Say what "done" looks like, then let it run][b-done] | [Say what "done" looks like, then let it run][p-say-what-done-looks-like-then-let-it-run] |
+| Run summary: Blocked on me / Changed / Found | Blog: [Read what it needs from you first][b-needs] | [Read what it needs from you first][p-read-what-it-needs-from-you-first] |
+| Keep a `TASKS.md` checklist | Blog: [Keep the task list in a file][b-tasks] | [Keep the task list in a file][p-keep-the-task-list-in-a-file] |
+| Split big work across subagents; check their evidence | Blog: [Ask it to split big work across subagents][b-sub] | [Split big work across subagents][p-split-big-work-across-subagents] |
+| Code review: only merge blockers, with file, line and a failing case | Blog: [Ask it to review the code][b-review] | [Ask it to review the code][p-ask-it-to-review-the-code] |
+| Mark what you could not confirm, and where you looked | Blog: [Ask it to mark what it couldn't confirm][b-confirm] | [Ask it to mark what it could not confirm][p-ask-it-to-mark-what-it-could-not-confirm] |
+| Find contradictions in a document: numbers, dates, names | Blog: [Ask it to check a long document][b-doc] | [Ask it to check a long document][p-ask-it-to-check-a-long-document] |
+| Frontend avoid list | Blog: [For design work, name the styles you don't want][b-design]; Guide: [Frontend design defaults][g-front] | [For design work, name the styles you do not want][p-for-design-work-name-the-styles-you-do-not-want] |
+| Explore connected apps before changing anything | Guide: [Explore context in multi-app workflows][g-explore] | [Explore context in multi-app workflows][p-explore-context-in-multi-app-workflows] |
+| Explain a choice in a few sentences, not the internal reasoning | Blog: [Don't ask it to show its reasoning in the reply][b-reason]; Guide: [Safeguard refusals][g-refusal] | [Do not ask it to show its reasoning in the reply][p-do-not-ask-it-to-show-its-reasoning-in-the-reply] |
+| Recovery after a safety flag (`/model`, Esc Esc, `/config`, `/feedback`), marked "applies to any model". The flag is rare, so the user will not remember the steps. | Blog: [In Claude Code][b-flag-cc]; [In Claude apps][b-flag-apps] | [In Claude Code][p-in-claude-code]; [In Claude apps][p-in-claude-apps] |
 
 **Prompt nudges.** Only the user can change what they type. A one-line note at the moment of the habit is
 the only automatic reminder possible.
 
-| Nudge | Source section |
-|---|---|
-| Delete "think carefully" / "think step by step" | Blog: [Stop telling it to "think hard"][b-think]; Guide: [Thinking instructions in chat system prompts][g-think] |
-| Do not ask to "show your reasoning" | Blog: [Don't ask it to show its reasoning in the reply][b-reason]; Guide: [Safeguard refusals][g-refusal] |
-| Give a big task a finish line | Blog: [Say what "done" looks like, then let it run][b-done] |
+| Nudge | Source section | Playbook card |
+|---|---|---|
+| Delete "think carefully" / "think step by step" | Blog: [Stop telling it to "think hard"][b-think]; Guide: [Thinking instructions in chat system prompts][g-think] | [Delete "think hard" instructions][p-delete-think-hard-instructions] |
+| Do not ask to "show your reasoning" | Blog: [Don't ask it to show its reasoning in the reply][b-reason]; Guide: [Safeguard refusals][g-refusal] | [Do not ask it to show its reasoning in the reply][p-do-not-ask-it-to-show-its-reasoning-in-the-reply] |
+| Give a big task a finish line | Blog: [Say what "done" looks like, then let it run][b-done] | [Say what "done" looks like, then let it run][p-say-what-done-looks-like-then-let-it-run] |
 
 **Stop hook.** This must happen with no one watching, and the model cannot remind itself after its turn ends.
 
-| Behavior | Source section |
-|---|---|
-| Send an unattended run back to open `TASKS.md` items | Blog: [Keep the task list in a file][b-tasks]; Guide: [Unattended agentic runs][g-unattended] |
+| Behavior | Source section | Playbook card |
+|---|---|---|
+| Send an unattended run back to open `TASKS.md` items | Blog: [Keep the task list in a file][b-tasks]; Guide: [Unattended agentic runs][g-unattended] | [Keep the task list in a file][p-keep-the-task-list-in-a-file]; [Unattended runs: a text-only end of turn is a report, not "done"][p-unattended-runs-a-text-only-end-of-turn-is-a-report-not-done] |
 
 **Audit skill.** These are one-time fixes. After one audit, no one needs to remember them.
 
-| Check | Source section |
-|---|---|
-| Delete think lines from saved instructions | Blog: [Stop telling it to "think hard"][b-think]; Guide: [Thinking instructions in chat system prompts][g-think] |
-| Find requests to show reasoning | Guide: [Safeguard refusals][g-refusal] |
-| Find "thinking disabled" (400 error on Opus 5.5) | Guide: [Prompts written for thinking disabled][g-disabled] |
-| Set effort to `medium` explicitly | Guide: [Calibrate effort][g-effort]; Effort: [Recommended effort levels for Claude Opus 5.5][e-rec] |
-| Keep permission prompts for destructive commands | Blog: [Tell it which stops you want][b-stops] |
+| Check | Source section | Playbook card |
+|---|---|---|
+| Delete think lines from saved instructions | Blog: [Stop telling it to "think hard"][b-think]; Guide: [Thinking instructions in chat system prompts][g-think] | [Delete "think hard" instructions][p-delete-think-hard-instructions] |
+| Find requests to show reasoning | Guide: [Safeguard refusals][g-refusal] | [Do not ask it to show its reasoning in the reply][p-do-not-ask-it-to-show-its-reasoning-in-the-reply] |
+| Find "thinking disabled" (400 error on Opus 5.5) | Guide: [Prompts written for thinking disabled][g-disabled] | [Migrate prompts written for thinking disabled][p-migrate-prompts-written-for-thinking-disabled] |
+| Set effort to `medium` explicitly | Guide: [Calibrate effort][g-effort]; Effort: [Recommended effort levels for Claude Opus 5.5][e-rec] | [Start at medium, set it explicitly, and measure][p-start-at-medium-set-it-explicitly-and-measure] |
+| Keep permission prompts for destructive commands | Blog: [Tell it which stops you want][b-stops] | [Tell it which stops you want][p-tell-it-which-stops-you-want] |
 
 ## What is not in the plugin, and why
 
-| Practice | Why not | Source section |
-|---|---|---|
-| "Treat an earlier answer as done" | The guide says it makes the model less likely to point out a mistake in an earlier answer. The plugin README gives it as an opt-in line for long chats. | Blog: [In a project, say when answers are settled][b-settled]; Guide: [Thinking instructions in chat system prompts][g-think] |
-| The long system-prompt paragraph for unattended runs | The guide says to leave it out of work where a person is present. The 2-sentence stop rule from the blog is used instead. | Guide: [Unattended agentic runs][g-unattended] |
-| 2–3 automatic continues | The Stop hook sends the model back once in a row (the built-in `stop_hook_active` flag). A counter would add state. Add it only if one continue is too few. | Guide: [Unattended agentic runs][g-unattended] |
-| `max_tokens` 128,000 | API only. Claude Code sets it. | Guide: [Calibrate effort][g-effort] |
-| `thinking.display: "updates"`, a reminder after 5 silent steps | API only. Claude Code shows progress notes itself. | Guide: [User-facing progress updates][g-progress] |
-| Per-message effort (beta header `mid-conversation-output-config-2026-07-01`) | API only. | Effort: [Per-message effort (beta)][e-mid]; [Best practices][e-best] |
-| Time budgets such as `elapsed 340s / 1200s` | API only, for your own multiagent harness. | Guide: [Time signals for multiagent harnesses][g-time] |
-| Refusal fallback | API only. | Guide: [Safeguard refusals][g-refusal] |
-| Marking pasted text | Claude Code already wraps pasted text in `<pasted_content>` tags. | Guide: [Mark pasted text in user messages][g-pasted] |
-| Claude apps (claude.ai, desktop, mobile) | Plugins do not run there. `opus55-kit/README.md` has a text to paste into a project's instructions. | Blog: [4. In Claude apps][b-apps] |
-| Attach the image instead of retyping it | A hook needs a word in the prompt or an event to react to. This habit has neither. The playbook page covers it. | Blog: [Share the chart or screenshot itself][b-chart]; Guide: [Tools for complex visual inputs][g-visual] |
-| `/fast` for back-and-forth work | Same: no trigger. | Blog: [Turn on fast mode when you're waiting on each reply][b-fast] |
-| Add details while the model works | Same: no trigger. | Blog: [Add to a running task][b-add] |
-| Ask for the finished file | Same: no trigger. | Blog: [Ask for the finished file][b-file] |
-| Separate skills for review, document checks and subagent audits | A skill edit applies to every model. These rules had to apply to Opus 5.5 only, so they went into the gated rules file. The cost: about 600 tokens of context in each Opus 5.5 session. | Blog: [Ask it to review the code][b-review]; [Ask it to check a long document][b-doc]; [Ask it to split big work across subagents][b-sub] |
+| Practice | Why not | Source section | Playbook card |
+|---|---|---|---|
+| "Treat an earlier answer as done" | The guide says it makes the model less likely to point out a mistake in an earlier answer. The plugin README gives it as an opt-in line for long chats. | Blog: [In a project, say when answers are settled][b-settled]; Guide: [Thinking instructions in chat system prompts][g-think] | [In a long chat, say when answers are settled][p-in-a-long-chat-say-when-answers-are-settled] |
+| The long system-prompt paragraph for unattended runs | The guide says to leave it out of work where a person is present. The 2-sentence stop rule from the blog is used instead. | Guide: [Unattended agentic runs][g-unattended] | [Unattended runs: a text-only end of turn is a report, not "done"][p-unattended-runs-a-text-only-end-of-turn-is-a-report-not-done] |
+| 2–3 automatic continues | The Stop hook sends the model back once in a row (the built-in `stop_hook_active` flag). A counter would add state. Add it only if one continue is too few. | Guide: [Unattended agentic runs][g-unattended] | [Unattended runs: a text-only end of turn is a report, not "done"][p-unattended-runs-a-text-only-end-of-turn-is-a-report-not-done] |
+| `max_tokens` 128,000 | API only. Claude Code sets it. | Guide: [Calibrate effort][g-effort] | [Set max_tokens high enough][p-set-max-tokens-high-enough] |
+| `thinking.display: "updates"`, a reminder after 5 silent steps | API only. Claude Code shows progress notes itself. | Guide: [User-facing progress updates][g-progress] | [User-facing progress updates: four controls][p-user-facing-progress-updates-four-controls] |
+| Per-message effort (beta header `mid-conversation-output-config-2026-07-01`) | API only. | Effort: [Per-message effort (beta)][e-mid]; [Best practices][e-best] | [Change effort mid-conversation without losing the cache][p-change-effort-mid-conversation-without-losing-the-cache] |
+| Time budgets such as `elapsed 340s / 1200s` | API only, for your own multiagent harness. | Guide: [Time signals for multiagent harnesses][g-time] | [Time signals for multiagent harnesses][p-time-signals-for-multiagent-harnesses] |
+| Refusal fallback | API only. | Guide: [Safeguard refusals][g-refusal] | [What the safeguards cover][p-what-the-safeguards-cover] |
+| Marking pasted text | Claude Code already wraps pasted text in `<pasted_content>` tags. | Guide: [Mark pasted text in user messages][g-pasted] | [Mark pasted text in user messages][p-mark-pasted-text-in-user-messages] |
+| Claude apps (claude.ai, desktop, mobile) | Plugins do not run there. `opus55-kit/README.md` has a text to paste into a project's instructions. | Blog: [4. In Claude apps][b-apps] | [Claude apps and visuals (section)][p-apps] |
+| Attach the image instead of retyping it | A hook needs a word in the prompt or an event to react to. This habit has neither. The playbook page covers it. | Blog: [Share the chart or screenshot itself][b-chart]; Guide: [Tools for complex visual inputs][g-visual] | [Share the chart or screenshot itself][p-share-the-chart-or-screenshot-itself]; [Tools for the densest visual inputs][p-tools-for-the-densest-visual-inputs] |
+| `/fast` for back-and-forth work | Same: no trigger. | Blog: [Turn on fast mode when you're waiting on each reply][b-fast] | [Turn on fast mode when you wait on each reply][p-turn-on-fast-mode-when-you-wait-on-each-reply] |
+| Add details while the model works | Same: no trigger. | Blog: [Add to a running task][b-add] | [Add to a running task][p-add-to-a-running-task] |
+| Ask for the finished file | Same: no trigger. | Blog: [Ask for the finished file][b-file] | [Ask for the finished file][p-ask-for-the-finished-file] |
+| Separate skills for review, document checks and subagent audits | A skill edit applies to every model. These rules had to apply to Opus 5.5 only, so they went into the gated rules file. The cost: about 600 tokens of context in each Opus 5.5 session. | Blog: [Ask it to review the code][b-review]; [Ask it to check a long document][b-doc]; [Ask it to split big work across subagents][b-sub] | [Ask it to review the code][p-ask-it-to-review-the-code]; [Ask it to check a long document][p-ask-it-to-check-a-long-document]; [Split big work across subagents][p-split-big-work-across-subagents] |
 
 ## Known limits
 
@@ -229,3 +230,33 @@ MIT (see `opus55-kit/.claude-plugin/plugin.json`).
 [e-rec]: https://platform.claude.com/docs/en/build-with-claude/effort#recommended-effort-levels-for-claude-opus-5-5
 [e-mid]: https://platform.claude.com/docs/en/build-with-claude/effort#change-effort-mid-conversation-beta
 [e-best]: https://platform.claude.com/docs/en/build-with-claude/effort#best-practices
+[p-add-to-a-running-task]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#add-to-a-running-task
+[p-apps]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#apps
+[p-ask-for-the-finished-file]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#ask-for-the-finished-file
+[p-ask-it-to-check-a-long-document]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#ask-it-to-check-a-long-document
+[p-ask-it-to-mark-what-it-could-not-confirm]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#ask-it-to-mark-what-it-could-not-confirm
+[p-ask-it-to-review-the-code]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#ask-it-to-review-the-code
+[p-change-effort-mid-conversation-without-losing-the-cache]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#change-effort-mid-conversation-without-losing-the-cache
+[p-delete-think-hard-instructions]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#delete-think-hard-instructions
+[p-do-not-ask-it-to-show-its-reasoning-in-the-reply]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#do-not-ask-it-to-show-its-reasoning-in-the-reply
+[p-explore-context-in-multi-app-workflows]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#explore-context-in-multi-app-workflows
+[p-for-design-work-name-the-styles-you-do-not-want]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#for-design-work-name-the-styles-you-do-not-want
+[p-in-a-long-chat-say-when-answers-are-settled]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#in-a-long-chat-say-when-answers-are-settled
+[p-in-claude-apps]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#in-claude-apps
+[p-in-claude-code]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#in-claude-code
+[p-keep-the-task-list-in-a-file]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#keep-the-task-list-in-a-file
+[p-mark-pasted-text-in-user-messages]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#mark-pasted-text-in-user-messages
+[p-migrate-prompts-written-for-thinking-disabled]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#migrate-prompts-written-for-thinking-disabled
+[p-read-what-it-needs-from-you-first]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#read-what-it-needs-from-you-first
+[p-say-what-done-looks-like-then-let-it-run]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#say-what-done-looks-like-then-let-it-run
+[p-set-max-tokens-high-enough]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#set-max-tokens-high-enough
+[p-share-the-chart-or-screenshot-itself]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#share-the-chart-or-screenshot-itself
+[p-split-big-work-across-subagents]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#split-big-work-across-subagents
+[p-start-at-medium-set-it-explicitly-and-measure]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#start-at-medium-set-it-explicitly-and-measure
+[p-tell-it-which-stops-you-want]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#tell-it-which-stops-you-want
+[p-time-signals-for-multiagent-harnesses]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#time-signals-for-multiagent-harnesses
+[p-tools-for-the-densest-visual-inputs]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#tools-for-the-densest-visual-inputs
+[p-turn-on-fast-mode-when-you-wait-on-each-reply]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#turn-on-fast-mode-when-you-wait-on-each-reply
+[p-unattended-runs-a-text-only-end-of-turn-is-a-report-not-done]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#unattended-runs-a-text-only-end-of-turn-is-a-report-not-done
+[p-user-facing-progress-updates-four-controls]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#user-facing-progress-updates-four-controls
+[p-what-the-safeguards-cover]: https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html#what-the-safeguards-cover
