@@ -102,26 +102,71 @@ The plugin came out of one Claude Code session on Opus 5.5 (2026-09-23 to 2026-0
 
 ## What is in the plugin, and why
 
-| Practice | Where it goes | Why there |
-|---|---|---|
-| Stop rules, finish line, run summary, task list, subagent evidence, review format, "mark what you couldn't confirm", document contradiction check, frontend avoid list, explore connected apps first, explain a choice briefly | Standing rules (`rules.md`) | These are the model's work, not the user's. Standing instructions let the user write them zero times. |
-| Recovery after a safety flag (`/model`, Esc Esc, `/config`, `/feedback`) | Standing rules, marked "applies to any model" | The flag is rare, so the user will not remember the steps. After a flag, the new model reads the rule and can tell the user. |
-| No "think carefully", no "show your reasoning", give a finish line | Prompt nudges | Only the user can change what they type. A one-line note at the moment of the habit is the only automatic reminder possible. |
-| Continue open items when a run stops halfway | Stop hook | This must happen with no one watching, and the model cannot remind itself after its turn ends. |
-| Delete think lines from saved instructions, set effort to `medium`, keep permission prompts for destructive commands | Audit skill | These are one-time fixes. After one audit, no one needs to remember them. |
+Each row links to the source section it comes from. Blog = the Opus 5.5 blog, Guide = "Prompting Claude
+Opus 5.5", Effort = the "Effort" docs page (see [Sources](#sources)).
+
+**Standing rules (`rules.md`).** These are the model's work, not the user's. Standing instructions let the
+user write them zero times.
+
+| Rule | Source section |
+|---|---|
+| When to stop and ask; keep going otherwise | Blog: [Tell it which stops you want][b-stops] |
+| State a finish line when the task has none | Blog: [Say what "done" looks like, then let it run][b-done] |
+| Run summary: Blocked on me / Changed / Found | Blog: [Read what it needs from you first][b-needs] |
+| Keep a `TASKS.md` checklist | Blog: [Keep the task list in a file][b-tasks] |
+| Split big work across subagents; check their evidence | Blog: [Ask it to split big work across subagents][b-sub] |
+| Code review: only merge blockers, with file, line and a failing case | Blog: [Ask it to review the code][b-review] |
+| Mark what you could not confirm, and where you looked | Blog: [Ask it to mark what it couldn't confirm][b-confirm] |
+| Find contradictions in a document: numbers, dates, names | Blog: [Ask it to check a long document][b-doc] |
+| Frontend avoid list | Blog: [For design work, name the styles you don't want][b-design]; Guide: [Frontend design defaults][g-front] |
+| Explore connected apps before changing anything | Guide: [Explore context in multi-app workflows][g-explore] |
+| Explain a choice in a few sentences, not the internal reasoning | Blog: [Don't ask it to show its reasoning in the reply][b-reason]; Guide: [Safeguard refusals][g-refusal] |
+| Recovery after a safety flag (`/model`, Esc Esc, `/config`, `/feedback`), marked "applies to any model". The flag is rare, so the user will not remember the steps. | Blog: [In Claude Code][b-flag-cc]; [In Claude apps][b-flag-apps] |
+
+**Prompt nudges.** Only the user can change what they type. A one-line note at the moment of the habit is
+the only automatic reminder possible.
+
+| Nudge | Source section |
+|---|---|
+| Delete "think carefully" / "think step by step" | Blog: [Stop telling it to "think hard"][b-think]; Guide: [Thinking instructions in chat system prompts][g-think] |
+| Do not ask to "show your reasoning" | Blog: [Don't ask it to show its reasoning in the reply][b-reason]; Guide: [Safeguard refusals][g-refusal] |
+| Give a big task a finish line | Blog: [Say what "done" looks like, then let it run][b-done] |
+
+**Stop hook.** This must happen with no one watching, and the model cannot remind itself after its turn ends.
+
+| Behavior | Source section |
+|---|---|
+| Send an unattended run back to open `TASKS.md` items | Blog: [Keep the task list in a file][b-tasks]; Guide: [Unattended agentic runs][g-unattended] |
+
+**Audit skill.** These are one-time fixes. After one audit, no one needs to remember them.
+
+| Check | Source section |
+|---|---|
+| Delete think lines from saved instructions | Blog: [Stop telling it to "think hard"][b-think]; Guide: [Thinking instructions in chat system prompts][g-think] |
+| Find requests to show reasoning | Guide: [Safeguard refusals][g-refusal] |
+| Find "thinking disabled" (400 error on Opus 5.5) | Guide: [Prompts written for thinking disabled][g-disabled] |
+| Set effort to `medium` explicitly | Guide: [Calibrate effort][g-effort]; Effort: [Recommended effort levels for Claude Opus 5.5][e-rec] |
+| Keep permission prompts for destructive commands | Blog: [Tell it which stops you want][b-stops] |
 
 ## What is not in the plugin, and why
 
-| Practice | Why not |
-|---|---|
-| "Treat an earlier answer as done" | The guide says it makes the model less likely to point out a mistake in an earlier answer. The plugin README gives it as an opt-in line for long chats. |
-| The long system-prompt paragraph for unattended runs | The guide says to leave it out of work where a person is present. The 2-sentence stop rule from the blog is used instead. |
-| 2–3 automatic continues | The Stop hook sends the model back once in a row (the built-in `stop_hook_active` flag). A counter would add state. Add it only if one continue is too few. |
-| API settings: `max_tokens` 128,000, `thinking.display: "updates"`, per-message effort (beta header `mid-conversation-output-config-2026-07-01`), time budgets such as `elapsed 340s / 1200s`, a reminder after 5 silent steps, refusal fallback | Claude Code sets these itself. They matter only when you write your own agent loop. See the guide. |
-| Marking pasted text, showing progress notes | Claude Code already does both (`<pasted_content>` tags, progress updates). |
-| Claude apps (claude.ai, desktop, mobile) | Plugins do not run there. `opus55-kit/README.md` has a text to paste into a project's instructions. |
-| Attach the image instead of retyping it, `/fast` for back-and-forth work, add details while the model works, ask for the finished file | A hook needs a word in the prompt or an event to react to. These habits have neither. The playbook page covers them. |
-| Separate skills for review, document checks and subagent audits | A skill edit applies to every model. These rules had to apply to Opus 5.5 only, so they went into the gated rules file. The cost: about 600 tokens of context in each Opus 5.5 session. |
+| Practice | Why not | Source section |
+|---|---|---|
+| "Treat an earlier answer as done" | The guide says it makes the model less likely to point out a mistake in an earlier answer. The plugin README gives it as an opt-in line for long chats. | Blog: [In a project, say when answers are settled][b-settled]; Guide: [Thinking instructions in chat system prompts][g-think] |
+| The long system-prompt paragraph for unattended runs | The guide says to leave it out of work where a person is present. The 2-sentence stop rule from the blog is used instead. | Guide: [Unattended agentic runs][g-unattended] |
+| 2–3 automatic continues | The Stop hook sends the model back once in a row (the built-in `stop_hook_active` flag). A counter would add state. Add it only if one continue is too few. | Guide: [Unattended agentic runs][g-unattended] |
+| `max_tokens` 128,000 | API only. Claude Code sets it. | Guide: [Calibrate effort][g-effort] |
+| `thinking.display: "updates"`, a reminder after 5 silent steps | API only. Claude Code shows progress notes itself. | Guide: [User-facing progress updates][g-progress] |
+| Per-message effort (beta header `mid-conversation-output-config-2026-07-01`) | API only. | Effort: [Per-message effort (beta)][e-mid]; [Best practices][e-best] |
+| Time budgets such as `elapsed 340s / 1200s` | API only, for your own multiagent harness. | Guide: [Time signals for multiagent harnesses][g-time] |
+| Refusal fallback | API only. | Guide: [Safeguard refusals][g-refusal] |
+| Marking pasted text | Claude Code already wraps pasted text in `<pasted_content>` tags. | Guide: [Mark pasted text in user messages][g-pasted] |
+| Claude apps (claude.ai, desktop, mobile) | Plugins do not run there. `opus55-kit/README.md` has a text to paste into a project's instructions. | Blog: [4. In Claude apps][b-apps] |
+| Attach the image instead of retyping it | A hook needs a word in the prompt or an event to react to. This habit has neither. The playbook page covers it. | Blog: [Share the chart or screenshot itself][b-chart]; Guide: [Tools for complex visual inputs][g-visual] |
+| `/fast` for back-and-forth work | Same: no trigger. | Blog: [Turn on fast mode when you're waiting on each reply][b-fast] |
+| Add details while the model works | Same: no trigger. | Blog: [Add to a running task][b-add] |
+| Ask for the finished file | Same: no trigger. | Blog: [Ask for the finished file][b-file] |
+| Separate skills for review, document checks and subagent audits | A skill edit applies to every model. These rules had to apply to Opus 5.5 only, so they went into the gated rules file. The cost: about 600 tokens of context in each Opus 5.5 session. | Blog: [Ask it to review the code][b-review]; [Ask it to check a long document][b-doc]; [Ask it to split big work across subagents][b-sub] |
 
 ## Known limits
 
@@ -150,3 +195,37 @@ README.txt                        the 3 source URLs
 ## License
 
 MIT (see `opus55-kit/.claude-plugin/plugin.json`).
+
+[b-stops]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#tell-it-which-stops-you-want
+[b-done]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#say-what-done-looks-like-then-let-it-run
+[b-needs]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#read-what-it-needs-from-you-first
+[b-tasks]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#keep-the-task-list-in-a-file
+[b-sub]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#ask-it-to-split-big-work-across-subagents
+[b-review]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#ask-it-to-review-the-code
+[b-confirm]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#ask-it-to-mark-what-it-couldnt-confirm
+[b-doc]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#ask-it-to-check-a-long-document
+[b-design]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#for-design-work-name-the-styles-you-dont-want
+[b-reason]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#dont-ask-it-to-show-its-reasoning-in-the-reply
+[b-flag-cc]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#in-claude-code
+[b-flag-apps]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#in-claude-apps
+[b-think]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#stop-telling-it-to-think-hard
+[b-settled]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#in-a-project-say-when-answers-are-settled
+[b-apps]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#4-in-claude-apps
+[b-chart]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#share-the-chart-or-screenshot-itself
+[b-fast]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#turn-on-fast-mode-when-youre-waiting-on-each-reply
+[b-add]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#add-to-a-running-task
+[b-file]: https://claude.dev/blog/getting-the-most-out-of-opus-5-5/#ask-for-the-finished-file
+[g-front]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#frontend-design-defaults
+[g-explore]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#explore-context-in-multi-app-workflows
+[g-refusal]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#safeguard-refusals
+[g-think]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#thinking-instructions-in-chat-system-prompts
+[g-unattended]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#unattended-agentic-runs
+[g-disabled]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#prompts-written-for-thinking-disabled
+[g-effort]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#calibrate-effort
+[g-progress]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#user-facing-progress-updates
+[g-time]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#time-signals-for-multi-agent-harnesses
+[g-pasted]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#mark-pasted-text-in-user-messages
+[g-visual]: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#tools-for-complex-visual-inputs
+[e-rec]: https://platform.claude.com/docs/en/build-with-claude/effort#recommended-effort-levels-for-claude-opus-5-5
+[e-mid]: https://platform.claude.com/docs/en/build-with-claude/effort#change-effort-mid-conversation-beta
+[e-best]: https://platform.claude.com/docs/en/build-with-claude/effort#best-practices
