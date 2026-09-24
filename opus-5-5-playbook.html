@@ -55,7 +55,7 @@
   .toc a { color: var(--text-2); text-decoration: none; display: block; padding: 3px 8px; border-left: 2px solid transparent; }
   .toc a:hover { color: var(--text); border-left-color: var(--teal); }
 
-  main { min-width: 0; padding-block: 32px; display: grid; gap: 56px; }
+  main { min-width: 0; padding-block: 32px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 56px; }
 
   .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 0.9rem; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); padding-block: 10px; border-bottom: 1px solid var(--line); }
   .facts[hidden], .toc li[hidden] { display: none; }

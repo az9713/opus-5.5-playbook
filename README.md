@@ -10,15 +10,20 @@ This repository holds two things:
 
 The repository is also a plugin marketplace (`.claude-plugin/marketplace.json`, name `opus55-local`).
 
+## The playbook page
+
+Open the live page: **[Opus 5.5 Prompting Playbook](https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html)** (GitHub Pages).
+Click the image to open it.
+
+[![Opus 5.5 Prompting Playbook](playbook.png)](https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html)
+
 ## Sources
 
 All rules and prompts come from three Anthropic pages (also listed in `README.txt`):
 
-| Source | URL |
-|---|---|
-| Blog: "Getting the most out of Opus 5.5 in Claude and Claude Code" (2026-09-22) | https://claude.dev/blog/getting-the-most-out-of-opus-5-5/ |
-| Guide: "Prompting Claude Opus 5.5" | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5 |
-| Docs: "Effort" (includes "Change effort mid-conversation", beta) | https://platform.claude.com/docs/en/build-with-claude/effort#change-effort-mid-conversation-beta |
+- Blog: [Getting the most out of Opus 5.5 in Claude and Claude Code](https://claude.dev/blog/getting-the-most-out-of-opus-5-5/) (2026-09-22)
+- Guide: [Prompting Claude Opus 5.5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5)
+- Docs: [Effort](https://platform.claude.com/docs/en/build-with-claude/effort#change-effort-mid-conversation-beta), including "Change effort mid-conversation" (beta)
 
 The plugin does not add advice of its own. Each rule restates a practice from these pages.
 
@@ -37,7 +42,7 @@ To try it for one session without installing:
 claude --plugin-dir /path/to/opus55-kit
 ```
 
-To see the playbook page, open `opus-5-5-playbook.html` in a browser.
+To see the playbook page, open the [live page](https://az9713.github.io/opus-5.5-playbook/opus-5-5-playbook.html), or open `opus-5-5-playbook.html` in a browser.
 
 ## What the plugin does
 
@@ -137,7 +142,8 @@ opus55-kit/                       the plugin (see opus55-kit/README.md)
   hooks/opus55.py                 both hooks, stdlib only, exits 0 on any error
   hooks/rules.md                  the 12 standing rules
   skills/opus55-audit/SKILL.md    one-time setup audit
-opus-5-5-playbook.html            30-practice reference page
+opus-5-5-playbook.html            30-practice reference page (served by GitHub Pages)
+playbook.png                      screenshot of the page for this README
 README.txt                        the 3 source URLs
 ```
 
